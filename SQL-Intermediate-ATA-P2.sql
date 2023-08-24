@@ -129,3 +129,23 @@ END AS RaisedSalary
 FROM master.dbo.EmployeeDemographics
 JOIN master.dbo.EmployeeSalary
 	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+/* Putting the HAVING clause to see counts of employees */
+/* The output will show us the count of employees greater than 1 */
+/* We must use HAVING clause after the GROUP BY statement as it relies on that */
+SELECT JobTitle, COUNT(JobTitle)
+FROM master.dbo.EmployeeDemographics
+JOIN master.dbo.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+GROUP BY JobTitle
+HAVING COUNT(JobTitle) > 1
+
+/* Putting the HAVING clause to see average salary of different JobTitles */
+/* The output will show us the average salary of JobTitles greater than 45000 */
+SELECT JobTitle, AVG(Salary)
+FROM master.dbo.EmployeeDemographics
+JOIN master.dbo.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+GROUP BY JobTitle
+HAVING AVG(Salary) > 45000
+ORDER BY AVG(Salary)
