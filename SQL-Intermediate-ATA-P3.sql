@@ -62,4 +62,13 @@ LEFT JOIN master.dbo.EmployeeSalary AS b
 LEFT JOIN master.dbo.WareHouseEmployeeDemographics AS c
 	ON a.EmployeeID = c.EmployeeID
 
-
+/* This query provides context and clarity about all three tables */
+/* DEMO is the alias for EmployeeDemographics */
+/* Sal is the alias for EmployeeSalary */
+/* Ware is the alias for WareHouseEmployeeDemographics */
+SELECT DEMO.EmployeeID, DEMO.FirstName, DEMO.LastName, DEMO.Age, DEMO.Gender
+FROM master.dbo.EmployeeDemographics AS DEMO
+LEFT JOIN master.dbo.EmployeeSalary AS Sal
+	ON DEMO.EmployeeID = Sal.EmployeeID
+LEFT JOIN master.dbo.WareHouseEmployeeDemographics AS Ware
+	ON DEMO.EmployeeID = Ware.EmployeeID
