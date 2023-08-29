@@ -45,3 +45,12 @@ FROM master.dbo.EmployeeDemographics AS DEMO
 SELECT DEMO.EmployeeID
 FROM master.dbo.EmployeeDemographics AS DEMO
 
+/* Here we gave aliases to two tables */
+/* Then we joined them on EmployeeID column */
+/* Then we chose to display two columns i.e. EmployeeID from DEMO and Salary from Sal */
+SELECT DEMO.EmployeeID, Sal.Salary
+FROM master.dbo.EmployeeDemographics AS DEMO
+JOIN master.dbo.EmployeeSalary AS Sal
+	ON DEMO.EmployeeID = Sal.EmployeeID
+
+
