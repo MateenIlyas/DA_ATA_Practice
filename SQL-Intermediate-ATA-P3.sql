@@ -33,4 +33,15 @@ WHERE EmployeeID = 1005
 SELECT AVG(Age) AS AvgAge
 FROM master.dbo.EmployeeDemographics
 
+/* This allows us to shorten the column names and show them in a congested space */
+/* Here, we have given aliases to the columns as well as the tables */
+/* First, we gave alias DEMO to the table EmployeeDemographics */
+/* Second, the two columns are combined and their new name is FullName */
+SELECT DEMO.FirstName + ' ' + Demo.LastName AS FullName
+FROM master.dbo.EmployeeDemographics AS DEMO
+
+/* This allows us to shorten the column names and show them in a congested space */
+/* Here, we gave alias DEMO to the table EmployeeDemographics */
+SELECT DEMO.EmployeeID
+FROM master.dbo.EmployeeDemographics AS DEMO
 
