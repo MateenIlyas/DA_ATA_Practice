@@ -53,4 +53,13 @@ FROM master.dbo.EmployeeDemographics AS DEMO
 JOIN master.dbo.EmployeeSalary AS Sal
 	ON DEMO.EmployeeID = Sal.EmployeeID
 
+/* This query is not a good way to use aliases as it lacks context and clarity */
+/* It will create confusion about which table is a, or b, or c */
+SELECT a.EmployeeID, a.FirstName, a.LastName, a.Age, a.Gender
+FROM master.dbo.EmployeeDemographics AS a
+LEFT JOIN master.dbo.EmployeeSalary AS b
+	ON a.EmployeeID = b.EmployeeID
+LEFT JOIN master.dbo.WareHouseEmployeeDemographics AS c
+	ON a.EmployeeID = c.EmployeeID
+
 
