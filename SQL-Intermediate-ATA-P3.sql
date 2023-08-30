@@ -82,3 +82,11 @@ FROM master.dbo.EmployeeDemographics AS DEMO
 LEFT JOIN master.dbo.EmployeeSalary AS Sal
 	ON DEMO.EmployeeID = Sal.EmployeeID
 
+/* This GROUP BY query will not add up the total number of same-gender employees */
+/* Instead it will show the number of employees that has a specific firstname, lastname, gender, and salary */
+SELECT DEMO.FirstName, DEMO.LastName, DEMO.Gender, Sal.Salary, COUNT(DEMO.Gender) AS TotalGender
+FROM master.dbo.EmployeeDemographics AS DEMO
+LEFT JOIN master.dbo.EmployeeSalary AS Sal
+	ON DEMO.EmployeeID = Sal.EmployeeID
+GROUP BY DEMO.FirstName, DEMO.LastName, DEMO.Gender, Sal.Salary
+
