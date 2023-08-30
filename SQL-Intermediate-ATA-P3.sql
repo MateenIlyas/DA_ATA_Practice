@@ -90,3 +90,10 @@ LEFT JOIN master.dbo.EmployeeSalary AS Sal
 	ON DEMO.EmployeeID = Sal.EmployeeID
 GROUP BY DEMO.FirstName, DEMO.LastName, DEMO.Gender, Sal.Salary
 
+/* In this GROUP BY statement we will find out the total number of employees of each gender */
+/* It will show the total number of females and total number of males in separate rows */
+SELECT DEMO.Gender, COUNT(DEMO.Gender) AS TotalGender
+FROM master.dbo.EmployeeDemographics AS DEMO
+LEFT JOIN master.dbo.EmployeeSalary AS Sal
+	ON DEMO.EmployeeID = Sal.EmployeeID
+GROUP BY DEMO.Gender
