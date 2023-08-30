@@ -72,3 +72,13 @@ LEFT JOIN master.dbo.EmployeeSalary AS Sal
 	ON DEMO.EmployeeID = Sal.EmployeeID
 LEFT JOIN master.dbo.WareHouseEmployeeDemographics AS Ware
 	ON DEMO.EmployeeID = Ware.EmployeeID
+
+/* We are using the PARTITION BY to find the TotalGender present in the table */
+/* It shows the record of an employee and the number of same gender employees working with them */
+/* Unlike GROUP BY statement, PARTITION BY statement doesn't reduces the entire table into one or two rows */
+SELECT DEMO.FirstName, DEMO.LastName, DEMO.Gender, Sal.Salary
+, COUNT(DEMO.Gender) OVER (PARTITION BY DEMO.Gender) AS TotalGender
+FROM master.dbo.EmployeeDemographics AS DEMO
+LEFT JOIN master.dbo.EmployeeSalary AS Sal
+	ON DEMO.EmployeeID = Sal.EmployeeID
+
